@@ -1,0 +1,14 @@
+Sybase: get list of stored procedures using a particular table
+
+
+
+Select distinct sysobjects.name
+, case 
+ when sysobjects.type = 'TR' then 'TRIGGER' 
+ when sysobjects.type = 'P' then 'PROCEDURE' 
+ when sysobjects.type = 'V' then 'VIEW' 
+ else 'UNKNOWN' end type
+from sysobjects inner join syscomments
+on sysobjects.id = syscomments.id
+where syscomments.text like '%tbl_books%'
+
