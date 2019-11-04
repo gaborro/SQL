@@ -1,0 +1,8 @@
+
+Sybase: get list of stored procedures using a particular table
+
+
+SELECT o.name
+FROM sysobjects AS o
+INNER JOIN sysprocedures AS p ON o.id = p.id
+WHERE o.name LIKE "ABC%"
